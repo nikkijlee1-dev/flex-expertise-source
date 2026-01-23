@@ -21,7 +21,7 @@ const Index = () => {
               Get in Touch
             </span>
             <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mt-4 text-foreground">
-              LET'S TALK
+              Let's Talk
             </h2>
             <p className="mt-6 text-lg text-muted-foreground">
               Ready to find your next exceptional resource? We're here to help.

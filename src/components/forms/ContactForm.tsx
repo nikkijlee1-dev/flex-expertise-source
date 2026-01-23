@@ -44,7 +44,7 @@ export function ContactForm() {
           <Check className="text-primary" size={32} />
         </div>
         <h3 className="font-heading text-2xl text-foreground">
-          MESSAGE RECEIVED
+          Message Received
         </h3>
         <p className="mt-4 text-muted-foreground max-w-md mx-auto">
           Thank you for reaching out. We'll get back to you within 24 hours.

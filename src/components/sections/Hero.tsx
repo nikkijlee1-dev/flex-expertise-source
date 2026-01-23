@@ -16,7 +16,7 @@ export function Hero() {
         <div className="max-w-4xl">
           {/* Main Heading */}
           <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none tracking-tight text-foreground animate-slide-up">
-            THE BEST TALENT ISN'T ALWAYS FULL-TIME.
+            The Best Talent Isn't Always Full-Time.
           </h1>
 
           {/* Subheading */}

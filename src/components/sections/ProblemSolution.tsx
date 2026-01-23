@@ -41,7 +41,7 @@ export function ProblemSolution() {
               The Challenge
             </span>
             <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mt-4 text-foreground">
-              THE MODERN WORKFORCE IS CHANGING.
+              The Modern Workforce Is Changing.
             </h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
               Companies need senior expertise but can't justify full-time
@@ -62,7 +62,7 @@ export function ProblemSolution() {
               Our Solution
             </span>
             <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mt-4 text-foreground">
-              WE BRIDGE THE GAP.
+              We Bridge The Gap.
             </h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
               We offer elite part-time resources that balance career and family.

@@ -54,7 +54,7 @@ export function HowWeWork() {
             Our Process
           </span>
           <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mt-4 text-foreground">
-            HOW WE WORK
+            How We Work
           </h2>
         </div>
 

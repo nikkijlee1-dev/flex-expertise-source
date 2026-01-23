@@ -40,7 +40,7 @@ const ForCompanies = () => {
               For Organizations
             </span>
             <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl mt-4 text-foreground">
-              SCALE WITH PRECISION.
+              Scale With Precision.
             </h1>
             <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-2xl">
               Access elite Project Managers and QA Testers without the overhead
@@ -59,7 +59,7 @@ const ForCompanies = () => {
                 The Hourly Model
               </span>
               <h2 className="font-heading text-4xl md:text-5xl mt-4 text-foreground">
-                SENIOR TALENT, FLEXIBLE TERMS.
+                Senior Talent, Flexible Terms.
               </h2>
               <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
                 Our professionals work on an hourly basis, giving you maximum
@@ -106,7 +106,7 @@ const ForCompanies = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto text-center mb-16">
             <h2 className="font-heading text-4xl md:text-5xl text-foreground">
-              START A CONVERSATION
+              Start A Conversation
             </h2>
             <p className="mt-6 text-lg text-muted-foreground">
               Tell us about your project and we'll show you how we can help.
