@@ -19,8 +19,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["Bebas Neue", "Thunder", "sans-serif"],
-        body: ["Host Grotesk", "system-ui", "sans-serif"],
+        heading: ["Roboto", "sans-serif"],
+        body: ["Roboto", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { href: "/#services", label: "Services" },
@@ -42,9 +43,9 @@ export function Header() {
           {/* Logo */}
           <Link
             to="/"
-            className="font-heading text-2xl tracking-wider text-foreground hover:text-primary transition-colors"
+            className="hover:opacity-80 transition-opacity"
           >
-            BLUE CAYE CONSULTING
+            <img src={logo} alt="Blue Caye Consulting Group" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
