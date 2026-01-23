@@ -2,11 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;600;700&display=swap');
-
-/* Thunder Bold - Using Bebas Neue as fallback for similar aesthetic */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+/* Import Google Fonts - Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 @layer base {
   :root {
@@ -45,8 +42,8 @@
     --radius: 0.5rem;
     
     /* Typography */
-    --font-heading: 'Bebas Neue', 'Thunder', sans-serif;
-    --font-body: 'Host Grotesk', system-ui, sans-serif;
+    --font-heading: 'Roboto', sans-serif;
+    --font-body: 'Roboto', sans-serif;
     
     /* Spacing */
     --section-padding: 100px;
@@ -99,6 +96,7 @@
   
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    font-weight: 700;
     letter-spacing: 0.02em;
     text-transform: uppercase;
   }

@@ -24,7 +24,7 @@ export function Hero() {
             className="mt-8 text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed animate-slide-up font-body"
             style={{ animationDelay: "100ms" }}
           >
-            Professional Project Managers and Testers for companies that value
+            Professional Project Managers, Release Managers, and Test Managers for companies that value
             expertise over overhead.
           </p>
 
