@@ -20,7 +20,7 @@ export function Hero() {
         <div className="max-w-4xl">
           {/* Main Heading */}
           <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none tracking-tight text-foreground animate-slide-up">
-            The Best Talent Isn't Always Full-Time.
+            Big Expertise. Small Footprint.
           </h1>
 
           {/* Subheading */}
@@ -28,8 +28,7 @@ export function Hero() {
             className="mt-8 text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed animate-slide-up font-body"
             style={{ animationDelay: "100ms" }}
           >
-            Professional Project Managers, Release Managers, and Test Managers for companies that value
-            expertise over overhead.
+            On-demand Project, Release, and Test Management. Ramp up quickly for critical windows and ramp down when support no longer needed.
           </p>
 
           {/* CTAs */}
