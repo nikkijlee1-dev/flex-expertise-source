@@ -36,7 +36,7 @@ const ForTalent = () => {
               For Professionals
             </span>
             <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl mt-4 text-foreground">
-              WORK THAT WORKS FOR YOUR LIFE.
+              Work That Works For Your Life.
             </h1>
             <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-2xl">
               You've built an exceptional career. Now find opportunities that
@@ -51,7 +51,7 @@ const ForTalent = () => {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="font-heading text-4xl md:text-5xl text-foreground">
-              WHY JOIN US
+              Why Join Us
             </h2>
             <p className="mt-6 text-lg text-muted-foreground">
               High-calibre professionals deserve high-calibre opportunities.
@@ -89,7 +89,7 @@ const ForTalent = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto text-center mb-16">
             <h2 className="font-heading text-4xl md:text-5xl text-foreground">
-              JOIN OUR NETWORK
+              Join Our Network
             </h2>
             <p className="mt-6 text-lg text-muted-foreground">
               Submit your details and we'll reach out when we find the perfect

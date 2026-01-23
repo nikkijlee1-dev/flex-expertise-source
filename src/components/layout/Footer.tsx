@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Linkedin } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 export function Footer() {
   return (
@@ -10,9 +11,9 @@ export function Footer() {
           <div className="text-center lg:text-left">
             <Link
               to="/"
-              className="font-heading text-xl tracking-wider text-background hover:text-primary transition-colors"
+              className="inline-block hover:opacity-80 transition-opacity"
             >
-              BLUE CAYE CONSULTING
+              <img src={logo} alt="Blue Caye Consulting Group" className="h-10 w-auto brightness-0 invert" />
             </Link>
             <p className="text-sm text-background/60 mt-2">
               Made for Professionals
