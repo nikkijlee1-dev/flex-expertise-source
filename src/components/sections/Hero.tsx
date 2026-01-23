@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { NetworkBackground } from "@/components/animations/NetworkBackground";
 
 export function Hero() {
   return (
@@ -8,7 +9,10 @@ export function Hero() {
       {/* Subtle gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-muted/50 via-background to-background" />
       
-      {/* Decorative elements */}
+      {/* Animated network background */}
+      <NetworkBackground />
+      
+      {/* Decorative gradient overlays */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
 
