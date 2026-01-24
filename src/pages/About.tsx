@@ -2,6 +2,10 @@ import { Layout } from "@/components/layout/Layout";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Linkedin } from "lucide-react";
+import consultant1 from "@/assets/team/consultant-1.jpg";
+import consultant2 from "@/assets/team/consultant-2.jpg";
+import advisor from "@/assets/team/advisor.jpg";
+import melbourneSkyline from "@/assets/melbourne-skyline.jpg";
 
 const teamMembers = [
   {
@@ -9,6 +13,7 @@ const teamMembers = [
     role: "Founder & Principal Consultant",
     bio: "With over 15 years of experience in project and release management across enterprise technology, our founding principal brings deep expertise in delivering complex programs for ASX-listed companies and global organisations.",
     initials: "PC",
+    image: consultant1,
     linkedin: "#",
   },
   {
@@ -16,6 +21,7 @@ const teamMembers = [
     role: "Founder & Principal Consultant",
     bio: "Specialising in test management and quality assurance, our co-founder has led testing strategies for major digital transformations, financial systems, and critical infrastructure projects across Australia.",
     initials: "PC",
+    image: consultant2,
     linkedin: "#",
   },
   {
@@ -23,6 +29,7 @@ const teamMembers = [
     role: "Legal & HR Advisor",
     bio: "Our advisor brings extensive experience in employment law, contractor compliance, and HR strategy, ensuring our operations and client engagements meet the highest standards of governance and best practice.",
     initials: "LA",
+    image: advisor,
     linkedin: "#",
   },
 ];
@@ -30,9 +37,19 @@ const teamMembers = [
 const About = () => {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-muted/50 via-background to-background">
-        <div className="container mx-auto px-6">
+      {/* Hero Section with Melbourne Skyline */}
+      <section className="relative min-h-[60vh] flex items-center section-padding overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src={melbourneSkyline}
+            alt="Melbourne skyline at golden hour"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
             <span className="text-primary font-medium text-sm tracking-widest uppercase">
               About Us
@@ -121,28 +138,35 @@ const About = () => {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {teamMembers.map((member, index) => (
-              <Card key={index} className="bg-background border-border hover:shadow-card transition-shadow">
-                <CardContent className="pt-8 text-center">
-                  <Avatar className="w-24 h-24 mx-auto mb-4">
-                    <AvatarImage src="" alt={member.name} />
-                    <AvatarFallback className="bg-primary/10 text-primary text-xl font-heading">
-                      {member.initials}
-                    </AvatarFallback>
-                  </Avatar>
-                  <h3 className="font-heading text-xl text-foreground">{member.name}</h3>
-                  <p className="text-primary text-sm font-medium mt-1">{member.role}</p>
-                  <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
-                    {member.bio}
-                  </p>
-                  <a
-                    href={member.linkedin}
-                    className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mt-4"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Linkedin size={18} />
-                    <span className="text-sm">Connect on LinkedIn</span>
-                  </a>
+              <Card key={index} className="bg-background border-border hover:shadow-lg transition-all duration-300 overflow-hidden group">
+                <CardContent className="p-0">
+                  {/* Image Container */}
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-6 text-center">
+                    <h3 className="font-heading text-xl text-foreground">{member.name}</h3>
+                    <p className="text-primary text-sm font-medium mt-1">{member.role}</p>
+                    <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
+                      {member.bio}
+                    </p>
+                    <a
+                      href={member.linkedin}
+                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mt-4"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Linkedin size={18} />
+                      <span className="text-sm">Connect on LinkedIn</span>
+                    </a>
+                  </div>
                 </CardContent>
               </Card>
             ))}
