@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { NetworkBackground } from "@/components/animations/NetworkBackground";
-import heroVideo from "@/assets/hero-forest-video.mp4";
-import heroImage from "@/assets/hero-forest.jpg";
+import heroVideo from "@/assets/hero-ocean-video.mp4";
+import heroImage from "@/assets/hero-ocean.jpg";
 
 export function Hero() {
   return (
