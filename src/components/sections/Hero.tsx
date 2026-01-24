@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import heroVideo from "@/assets/hero-bees-video.mp4";
-import heroImage from "@/assets/hero-bees-bg.jpg";
+import { NetworkBackground } from "@/components/animations/NetworkBackground";
+import heroVideo from "@/assets/hero-forest-video.mp4";
+import heroImage from "@/assets/hero-forest.jpg";
 
 export function Hero() {
   return (
     <section className="relative min-h-[90vh] flex items-center section-padding overflow-hidden">
-      {/* Animated Video Background */}
+      {/* Animated Forest Video Background */}
       <div className="absolute inset-0">
         <video
           autoPlay
@@ -19,10 +20,13 @@ export function Hero() {
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
-        {/* Gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-background/30" />
+        {/* Gradient overlays for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-background/20" />
       </div>
+
+      {/* Animated Network Overlay */}
+      <NetworkBackground />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl">
