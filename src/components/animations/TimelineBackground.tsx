@@ -1,4 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { Button } from "@/components/ui/button";
+import { Download, Loader2 } from "lucide-react";
 
 interface Bar {
   y: number;
@@ -10,10 +12,96 @@ interface Bar {
   blur: number;
 }
 
-export function TimelineBackground() {
+interface TimelineBackgroundProps {
+  showDownloadButton?: boolean;
+}
+
+export function TimelineBackground({ showDownloadButton = false }: TimelineBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
   const barsRef = useRef<Bar[]>([]);
+  const [isRecording, setIsRecording] = useState(false);
+
+  // Theme colors in HSL
+  const colors = [
+    "hsla(202, 85%, 44%, 0.6)",
+    "hsla(202, 85%, 44%, 0.4)",
+    "hsla(224, 80%, 61%, 0.5)",
+    "hsla(224, 80%, 61%, 0.35)",
+    "hsla(330, 68%, 58%, 0.45)",
+    "hsla(330, 68%, 58%, 0.3)",
+    "hsla(202, 85%, 55%, 0.35)",
+    "hsla(330, 68%, 65%, 0.25)",
+  ];
+
+  const downloadGif = useCallback(async () => {
+    const canvas = canvasRef.current;
+    if (!canvas || isRecording) return;
+
+    setIsRecording(true);
+
+    try {
+      // Dynamically import gif.js
+      const GIF = (await import("gif.js")).default;
+
+      const gif = new GIF({
+        workers: 2,
+        quality: 10,
+        width: canvas.width / (window.devicePixelRatio || 1),
+        height: canvas.height / (window.devicePixelRatio || 1),
+        workerScript: "https://unpkg.com/gif.js@0.2.0/dist/gif.worker.js",
+      });
+
+      const frameCount = 60; // ~2 seconds at 30fps
+      const frameDelay = 33; // ~30fps
+
+      // Capture frames
+      for (let i = 0; i < frameCount; i++) {
+        // Create a temporary canvas for each frame at display size
+        const tempCanvas = document.createElement("canvas");
+        const dpr = window.devicePixelRatio || 1;
+        tempCanvas.width = canvas.width / dpr;
+        tempCanvas.height = canvas.height / dpr;
+        const tempCtx = tempCanvas.getContext("2d");
+        
+        if (tempCtx) {
+          // Draw the current canvas scaled down to display size
+          tempCtx.drawImage(
+            canvas,
+            0,
+            0,
+            canvas.width,
+            canvas.height,
+            0,
+            0,
+            tempCanvas.width,
+            tempCanvas.height
+          );
+          gif.addFrame(tempCtx, { copy: true, delay: frameDelay });
+        }
+
+        // Wait for next animation frame
+        await new Promise((resolve) => setTimeout(resolve, frameDelay));
+      }
+
+      gif.on("finished", (blob: Blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "timeline-animation.gif";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        setIsRecording(false);
+      });
+
+      gif.render();
+    } catch (error) {
+      console.error("Failed to generate GIF:", error);
+      setIsRecording(false);
+    }
+  }, [isRecording]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -21,18 +109,6 @@ export function TimelineBackground() {
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-
-    // Theme colors in HSL
-    const colors = [
-      "hsla(202, 85%, 44%, 0.6)",   // Primary blue
-      "hsla(202, 85%, 44%, 0.4)",   // Primary blue lighter
-      "hsla(224, 80%, 61%, 0.5)",   // Secondary blue
-      "hsla(224, 80%, 61%, 0.35)",  // Secondary blue lighter
-      "hsla(330, 68%, 58%, 0.45)",  // Accent pink
-      "hsla(330, 68%, 58%, 0.3)",   // Accent pink lighter
-      "hsla(202, 85%, 55%, 0.35)", // Lighter primary
-      "hsla(330, 68%, 65%, 0.25)", // Lighter pink
-    ];
 
     const resizeCanvas = () => {
       const dpr = window.devicePixelRatio || 1;
@@ -46,26 +122,24 @@ export function TimelineBackground() {
 
     const initBars = () => {
       const rect = canvas.getBoundingClientRect();
-      const barCount = 18; // Number of horizontal bars
+      const barCount = 18;
       barsRef.current = [];
 
       for (let i = 0; i < barCount; i++) {
-        // Distribute bars vertically with some randomness
         const baseY = (rect.height / barCount) * i;
         const yVariation = (Math.random() - 0.5) * 40;
         
         barsRef.current.push({
           y: baseY + yVariation,
-          width: Math.random() * 400 + 200, // Random width between 200-600
-          height: Math.random() * 25 + 15,  // Random height between 15-40
-          speed: (Math.random() * 0.3 + 0.1) * (Math.random() > 0.5 ? 1 : -1), // Slow speed, random direction
-          offset: Math.random() * rect.width * 2, // Random starting position
+          width: Math.random() * 400 + 200,
+          height: Math.random() * 25 + 15,
+          speed: (Math.random() * 0.3 + 0.1) * (Math.random() > 0.5 ? 1 : -1),
+          offset: Math.random() * rect.width * 2,
           color: colors[Math.floor(Math.random() * colors.length)],
-          blur: Math.random() * 15 + 8, // Blur between 8-23px
+          blur: Math.random() * 15 + 8,
         });
       }
 
-      // Add some milestone dots (larger, more prominent bars)
       for (let i = 0; i < 6; i++) {
         barsRef.current.push({
           y: Math.random() * rect.height,
@@ -84,7 +158,6 @@ export function TimelineBackground() {
     const drawBars = (time: number) => {
       const rect = canvas.getBoundingClientRect();
       
-      // Soft gradient background
       const bgGradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
       bgGradient.addColorStop(0, "hsl(210, 20%, 98%)");
       bgGradient.addColorStop(0.5, "hsl(220, 25%, 96%)");
@@ -94,15 +167,12 @@ export function TimelineBackground() {
 
       const bars = barsRef.current;
 
-      // Draw each bar with blur effect
       bars.forEach((bar) => {
-        // Calculate position with smooth looping
         const x = ((bar.offset + time * bar.speed) % (rect.width + bar.width * 2)) - bar.width;
         
         ctx.save();
         ctx.filter = `blur(${bar.blur}px)`;
         
-        // Draw rounded rectangle bar
         ctx.beginPath();
         const radius = bar.height / 2;
         ctx.roundRect(x, bar.y, bar.width, bar.height, radius);
@@ -112,7 +182,6 @@ export function TimelineBackground() {
         ctx.restore();
       });
 
-      // Add subtle horizontal grid lines for timeline effect
       ctx.save();
       ctx.filter = "blur(1px)";
       for (let i = 0; i < 8; i++) {
@@ -149,10 +218,32 @@ export function TimelineBackground() {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full"
-      aria-hidden="true"
-    />
+    <>
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full"
+        aria-hidden="true"
+      />
+      {showDownloadButton && (
+        <Button
+          onClick={downloadGif}
+          disabled={isRecording}
+          className="absolute bottom-4 right-4 z-20"
+          size="sm"
+        >
+          {isRecording ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Recording...
+            </>
+          ) : (
+            <>
+              <Download className="mr-2 h-4 w-4" />
+              Download GIF
+            </>
+          )}
+        </Button>
+      )}
+    </>
   );
 }
