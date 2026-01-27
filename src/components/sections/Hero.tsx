@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { TimelineBackground } from "@/components/animations/TimelineBackground";
-import { NetworkBackground } from "@/components/animations/NetworkBackground";
 
 export function Hero() {
   return (
@@ -13,9 +12,6 @@ export function Hero() {
         {/* Subtle overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-background/40 to-background/30" />
       </div>
-
-      {/* Animated Network Overlay */}
-      <NetworkBackground />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl">
