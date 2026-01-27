@@ -27,3 +27,7 @@ jobs:
         server-dir: ./public_html/
         protocol: ftps
           port: 21
+
+          # --- ADD THESE TWO LINES ---
+          protocol: ftps
+          port: 21
