@@ -1,28 +1,17 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { TimelineBackground } from "@/components/animations/TimelineBackground";
 import { NetworkBackground } from "@/components/animations/NetworkBackground";
-import heroVideo from "@/assets/hero-ocean-video.mp4";
-import heroImage from "@/assets/hero-ocean.jpg";
 
 export function Hero() {
   return (
     <section className="relative min-h-[90vh] flex items-center section-padding overflow-hidden">
-      {/* Animated Forest Video Background */}
+      {/* Animated Timeline Background */}
       <div className="absolute inset-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster={heroImage}
-          className="w-full h-full object-cover"
-        >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
-        {/* Gradient overlays for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-background/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-background/20" />
+        <TimelineBackground />
+        {/* Subtle overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-background/40 to-background/30" />
       </div>
 
       {/* Animated Network Overlay */}
