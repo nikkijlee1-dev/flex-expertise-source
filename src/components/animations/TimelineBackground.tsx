@@ -20,6 +20,7 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
   const barsRef = useRef<Bar[]>([]);
+  const timeRef = useRef<number>(0);
   const [isRecording, setIsRecording] = useState(false);
 
   // Theme colors in HSL
@@ -41,64 +42,62 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
     setIsRecording(true);
 
     try {
-      // Dynamically import gif.js
-      const GIF = (await import("gif.js")).default;
+      const { encode } = await import("modern-gif");
+      
+      const dpr = window.devicePixelRatio || 1;
+      const width = Math.floor(canvas.width / dpr);
+      const height = Math.floor(canvas.height / dpr);
+      
+      const frames: ImageBitmap[] = [];
+      const frameCount = 45;
+      const frameDelay = 33;
 
-      const gif = new GIF({
-        workers: 2,
-        quality: 10,
-        width: canvas.width / (window.devicePixelRatio || 1),
-        height: canvas.height / (window.devicePixelRatio || 1),
-        workerScript: "https://unpkg.com/gif.js@0.2.0/dist/gif.worker.js",
-      });
+      // Create temp canvas at display size
+      const tempCanvas = document.createElement("canvas");
+      tempCanvas.width = width;
+      tempCanvas.height = height;
+      const tempCtx = tempCanvas.getContext("2d");
 
-      const frameCount = 60; // ~2 seconds at 30fps
-      const frameDelay = 33; // ~30fps
+      if (!tempCtx) throw new Error("Could not get canvas context");
 
-      // Capture frames
+      // Capture frames over time
       for (let i = 0; i < frameCount; i++) {
-        // Create a temporary canvas for each frame at display size
-        const tempCanvas = document.createElement("canvas");
-        const dpr = window.devicePixelRatio || 1;
-        tempCanvas.width = canvas.width / dpr;
-        tempCanvas.height = canvas.height / dpr;
-        const tempCtx = tempCanvas.getContext("2d");
+        tempCtx.drawImage(
+          canvas,
+          0, 0, canvas.width, canvas.height,
+          0, 0, width, height
+        );
         
-        if (tempCtx) {
-          // Draw the current canvas scaled down to display size
-          tempCtx.drawImage(
-            canvas,
-            0,
-            0,
-            canvas.width,
-            canvas.height,
-            0,
-            0,
-            tempCanvas.width,
-            tempCanvas.height
-          );
-          gif.addFrame(tempCtx, { copy: true, delay: frameDelay });
-        }
+        // Create ImageBitmap from the temp canvas
+        const bitmap = await createImageBitmap(tempCanvas);
+        frames.push(bitmap);
 
-        // Wait for next animation frame
         await new Promise((resolve) => setTimeout(resolve, frameDelay));
       }
 
-      gif.on("finished", (blob: Blob) => {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "timeline-animation.gif";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        setIsRecording(false);
+      // Encode GIF using ImageBitmap (CanvasImageSource) as data
+      const output = await encode({
+        width,
+        height,
+        frames: frames.map((bitmap) => ({
+          data: bitmap,
+          delay: frameDelay,
+        })),
       });
 
-      gif.render();
+      // Download
+      const blob = new Blob([output], { type: "image/gif" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "timeline-animation.gif";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     } catch (error) {
       console.error("Failed to generate GIF:", error);
+    } finally {
       setIsRecording(false);
     }
   }, [isRecording]);
@@ -156,6 +155,7 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
     };
 
     const drawBars = (time: number) => {
+      timeRef.current = time;
       const rect = canvas.getBoundingClientRect();
       
       const bgGradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
