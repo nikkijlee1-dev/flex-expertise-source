@@ -13,7 +13,7 @@ export function Footer() {
               to="/"
               className="inline-block hover:opacity-80 transition-opacity"
             >
-              <img src={logo} alt="Blue Caye Consulting Group" className="h-10 w-auto brightness-0 invert" />
+              <img src={logo} alt="Blue Caye Consulting Group" className="h-[60px] w-auto brightness-0 invert" />
             </Link>
             <p className="text-sm text-background/60 mt-2">
               Made for Professionals
