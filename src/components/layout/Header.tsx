@@ -45,7 +45,7 @@ export function Header() {
             to="/"
             className="hover:opacity-80 transition-opacity"
           >
-            <img src={logo} alt="Blue Caye Consulting Group" className="h-12 w-auto" />
+            <img src={logo} alt="Blue Caye Consulting Group" className="h-[72px] w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
