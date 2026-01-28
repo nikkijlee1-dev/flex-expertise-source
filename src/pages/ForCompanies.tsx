@@ -37,7 +37,7 @@ const ForCompanies = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl">
             <span className="text-primary font-medium text-sm tracking-widest uppercase">
-              For Organizations
+              For Organisations
             </span>
             <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl mt-4 text-foreground">
               Scale With Precision.
