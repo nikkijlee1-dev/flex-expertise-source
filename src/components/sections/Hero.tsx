@@ -8,7 +8,7 @@ export function Hero() {
     <section className="relative min-h-[90vh] flex items-center section-padding overflow-hidden">
       {/* Animated Timeline Background */}
       <div className="absolute inset-0">
-        <TimelineBackground showDownloadButton />
+        <TimelineBackground />
         {/* Subtle overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-background/40 to-background/30" />
       </div>
