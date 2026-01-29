@@ -9,7 +9,8 @@ export function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-1 pt-20">{children}</main>
+      {/* Adjusted padding: 38px (announcement bar) + 80px (header) = 118px, plus some extra */}
+      <main className="flex-1 pt-[138px]">{children}</main>
       <Footer />
     </div>
   );

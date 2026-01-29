@@ -1,38 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent } from "@/components/ui/card";
-import { Linkedin } from "lucide-react";
-import consultant1 from "@/assets/team/consultant-1.jpg";
-import consultant2 from "@/assets/team/consultant-2.jpg";
-import advisor from "@/assets/team/advisor.jpg";
 import melbourneSkyline from "@/assets/melbourne-skyline.jpg";
-
-const teamMembers = [
-  {
-    name: "Principal Consultant",
-    role: "Founder & Principal Consultant",
-    bio: "With over 15 years of experience in project and release management across enterprise technology, our founding principal brings deep expertise in delivering complex programs for ASX-listed companies and global organisations.",
-    initials: "PC",
-    image: consultant1,
-    linkedin: "#",
-  },
-  {
-    name: "Principal Consultant",
-    role: "Founder & Principal Consultant",
-    bio: "Specialising in test management and quality assurance, our co-founder has led testing strategies for major digital transformations, financial systems, and critical infrastructure projects across Australia.",
-    initials: "PC",
-    image: consultant2,
-    linkedin: "#",
-  },
-  {
-    name: "Legal & HR Advisor",
-    role: "Legal & HR Advisor",
-    bio: "Our advisor brings extensive experience in employment law, contractor compliance, and HR strategy, ensuring our operations and client engagements meet the highest standards of governance and best practice.",
-    initials: "LA",
-    image: advisor,
-    linkedin: "#",
-  },
-];
 
 const About = () => {
   return (
@@ -52,28 +19,62 @@ const About = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
             <span className="text-primary font-medium text-sm tracking-widest uppercase">
-              About Us
+              Our Story
             </span>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mt-4 text-foreground">
-              Melbourne-Based Expertise Since 2019
+              Redefining the Standard of Project Leadership
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Blue Caye Consulting Group was founded in Melbourne in 2019 with a clear mission: 
-              to provide organisations with access to senior-level project, release, and test 
-              management expertise without the overhead of full-time hires.
+          </div>
+        </div>
+      </section>
+
+      {/* The 2018 Beginning */}
+      <section className="section-padding">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-6">
+              The 2018 Beginning
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Blue Caye Consulting Group was founded in 2018 with a simple goal: to provide high calibre project management that actually delivers on its promises. In those early days, the corporate world was still tethered to the traditional 9-to-5, 40-hour-week model. But even then, we saw the cracks—businesses were overpaying for 'presence' rather than 'progress'.
             </p>
-            <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-              We understand that critical project phases don't always align with permanent 
-              headcount budgets. That's why we offer flexible, on-demand consulting services 
-              that scale with your needs—ramping up for crucial delivery windows and stepping 
-              back when the job is done.
+          </div>
+        </div>
+      </section>
+
+      {/* A Changing World */}
+      <section className="section-padding bg-muted/30">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-6">
+              A Changing World
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              The events of 2020 and the post-COVID landscape changed everything. The way we work shifted permanently, but more importantly, the way the world's best talent wants to work shifted too. We noticed a growing pool of veteran Project, Release, and Test Managers—the heavy hitters of the industry—opting out of the traditional corporate grind in search of flexibility and purpose.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Unlocking Untapped Talent */}
+      <section className="section-padding">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-6">
+              Unlocking Untapped Talent
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              Today, Blue Caye exists to bridge that gap. We realised that some of the best minds in Australia were becoming 'untapped' because they no longer fit into a rigid full time box.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Our mission is to unlock this elite talent pool for your business. We connect you with seasoned specialists who bring years of 'safe hands' experience to your most critical projects, but on a fractional, hourly basis. It's a model built for the modern era: high-impact expertise, scaled to your needs, delivered with total transparency.
             </p>
           </div>
         </div>
       </section>
 
       {/* Values Section */}
-      <section className="section-padding">
+      <section className="section-padding bg-muted/30">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <span className="text-primary font-medium text-sm tracking-widest uppercase">
@@ -120,56 +121,6 @@ const About = () => {
                 technology, government, and enterprise sectors.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="section-padding bg-muted/30">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="text-primary font-medium text-sm tracking-widest uppercase">
-              Our Team
-            </span>
-            <h2 className="font-heading text-3xl md:text-4xl mt-4 text-foreground">
-              Meet the People Behind Blue Caye
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {teamMembers.map((member, index) => (
-              <Card key={index} className="bg-background border-border hover:shadow-lg transition-all duration-300 overflow-hidden group">
-                <CardContent className="p-0">
-                  {/* Image Container */}
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="p-6 text-center">
-                    <h3 className="font-heading text-xl text-foreground">{member.name}</h3>
-                    <p className="text-primary text-sm font-medium mt-1">{member.role}</p>
-                    <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
-                      {member.bio}
-                    </p>
-                    <a
-                      href={member.linkedin}
-                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mt-4"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Linkedin size={18} />
-                      <span className="text-sm">Connect on LinkedIn</span>
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>

@@ -17,7 +17,7 @@ export function Hero() {
         <div className="max-w-4xl">
           {/* Main Heading */}
           <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none tracking-tight text-foreground animate-slide-up">
-            Big Expertise. Small Footprint.
+            Senior Project Leadership. Scaled to Your Business.
           </h1>
 
           {/* Subheading */}
@@ -25,7 +25,7 @@ export function Hero() {
             className="mt-8 text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed animate-slide-up font-body"
             style={{ animationDelay: "100ms" }}
           >
-            On-demand Project, Release, and Test Management. Ramp up quickly for critical windows and ramp down when support no longer needed.
+            Access high calibre Project, Release, and Test Managers on a flexible, part time basis. We bridge the talent gap for Australian firms, delivering expert execution without the full time overhead.
           </p>
 
           {/* CTAs */}
@@ -34,13 +34,13 @@ export function Hero() {
             style={{ animationDelay: "200ms" }}
           >
             <Button variant="hero" size="lg" asChild>
-              <Link to="/for-companies">
-                Hire a Specialist
+              <Link to="/#contact">
+                Access our Talent
                 <ArrowRight size={18} />
               </Link>
             </Button>
             <Button variant="hero-accent" size="lg" asChild>
-              <Link to="/for-talent">Submit CV</Link>
+              <Link to="/join-talent-pool">Join our Talent Pool</Link>
             </Button>
           </div>
         </div>
