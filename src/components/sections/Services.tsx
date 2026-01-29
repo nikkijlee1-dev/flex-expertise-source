@@ -6,19 +6,19 @@ const services = [
     icon: ClipboardList,
     title: "Project Management",
     description:
-      "Senior PMs who bring structure, clarity, and delivery excellence to your most critical initiatives. From agile to waterfall, we speak your language.",
+      "Senior PMs who bring structure, clarity, and delivery excellence to your most critical initiatives. We are experts in balancing Agile speed with the rigorous reporting required by CapEx funding models, ensuring delivery remains on track.",
   },
   {
     icon: GitBranch,
     title: "Release Management",
     description:
-      "Expert Release Managers who orchestrate seamless deployments and coordinate cross-functional teams. We ensure your releases are on time, every time.",
+      "Specialist Release Managers who orchestrate seamless deployments and coordinate cross-functional teams. We manage the risk and complexity of your release cycles on an on-demand basis, ensuring your software hits the market on time, every time.",
   },
   {
     icon: Shield,
     title: "Test Management",
     description:
-      "Seasoned Test Managers who build and lead high-performing QA teams. From strategy to execution, we ensure your product meets the highest standards.",
+      "Accomplished Test Managers who build and lead high-performing QA teams. From strategy to automation oversight, we ensure your product meets the highest standards without the full time headcount.",
   },
 ];
 

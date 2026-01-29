@@ -55,7 +55,8 @@ export function CVUploadForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
+    // TODO: Integrate with backend - route to admin@bluecaye.com.au with file attachment
+    // Simulate API call for now
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     setIsSubmitting(false);
@@ -69,7 +70,7 @@ export function CVUploadForm() {
           <Check className="text-primary" size={32} />
         </div>
         <h3 className="font-heading text-2xl text-foreground">
-          APPLICATION RECEIVED
+          Application Received
         </h3>
         <p className="mt-4 text-muted-foreground max-w-md mx-auto">
           Thank you for your interest. We'll review your profile and reach out
@@ -143,7 +144,7 @@ export function CVUploadForm() {
       {/* File Upload */}
       <div>
         <label className="block text-sm font-medium text-foreground mb-2">
-          Upload CV
+          Upload CV (PDF or Word)
         </label>
         <div
           className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
@@ -193,7 +194,7 @@ export function CVUploadForm() {
       {/* Submit Button */}
       <Button
         type="submit"
-        variant="hero"
+        variant="hero-accent"
         size="lg"
         className="w-full"
         disabled={isSubmitting}

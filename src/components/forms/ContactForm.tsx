@@ -5,7 +5,8 @@ import { Check, Loader2, Send } from "lucide-react";
 interface FormData {
   name: string;
   email: string;
-  company: string;
+  companyOrRole: string;
+  enquiryType: string;
   message: string;
 }
 
@@ -13,14 +14,15 @@ export function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
-    company: "",
+    companyOrRole: "",
+    enquiryType: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -30,7 +32,8 @@ export function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
+    // TODO: Integrate with backend (CAPTCHA + email to admin@bluecaye.com.au)
+    // Simulate API call for now
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     setIsSubmitting(false);
@@ -61,7 +64,7 @@ export function ContactForm() {
           htmlFor="contact-name"
           className="block text-sm font-medium text-foreground mb-2"
         >
-          Your Name
+          Name
         </label>
         <input
           type="text"
@@ -81,7 +84,7 @@ export function ContactForm() {
           htmlFor="contact-email"
           className="block text-sm font-medium text-foreground mb-2"
         >
-          Email Address
+          Email
         </label>
         <input
           type="email"
@@ -95,23 +98,45 @@ export function ContactForm() {
         />
       </div>
 
-      {/* Company Field */}
+      {/* Company/Current Role Field */}
       <div>
         <label
-          htmlFor="company"
+          htmlFor="companyOrRole"
           className="block text-sm font-medium text-foreground mb-2"
         >
-          Company
+          Company / Current Role
         </label>
         <input
           type="text"
-          id="company"
-          name="company"
-          value={formData.company}
+          id="companyOrRole"
+          name="companyOrRole"
+          value={formData.companyOrRole}
           onChange={handleInputChange}
           className="input-minimal"
-          placeholder="Acme Inc."
+          placeholder="Acme Inc. / Senior PM"
         />
+      </div>
+
+      {/* Enquiry Type Dropdown */}
+      <div>
+        <label
+          htmlFor="enquiryType"
+          className="block text-sm font-medium text-foreground mb-2"
+        >
+          I am a...
+        </label>
+        <select
+          id="enquiryType"
+          name="enquiryType"
+          required
+          value={formData.enquiryType}
+          onChange={handleInputChange}
+          className="select-minimal"
+        >
+          <option value="" disabled>Select an option</option>
+          <option value="client">Client looking for Talent</option>
+          <option value="specialist">Specialist looking for a Role</option>
+        </select>
       </div>
 
       {/* Message Field */}
@@ -120,7 +145,7 @@ export function ContactForm() {
           htmlFor="message"
           className="block text-sm font-medium text-foreground mb-2"
         >
-          How can we help?
+          Message
         </label>
         <textarea
           id="message"
@@ -130,14 +155,19 @@ export function ContactForm() {
           value={formData.message}
           onChange={handleInputChange}
           className="input-minimal resize-none"
-          placeholder="Tell us about your project or hiring needs..."
+          placeholder="Tell us about your project or how we can help..."
         />
+      </div>
+
+      {/* CAPTCHA placeholder - will be integrated with backend */}
+      <div className="text-xs text-muted-foreground text-center">
+        This form is protected by reCAPTCHA.
       </div>
 
       {/* Submit Button */}
       <Button
         type="submit"
-        variant="hero"
+        variant="hero-accent"
         size="lg"
         className="w-full"
         disabled={isSubmitting}
@@ -149,7 +179,7 @@ export function ContactForm() {
           </>
         ) : (
           <>
-            Start a Conversation
+            Send Message
             <Send size={18} />
           </>
         )}
