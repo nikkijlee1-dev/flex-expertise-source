@@ -28,7 +28,7 @@ const steps = [
     number: "04",
     title: "Seamless Integration",
     description:
-      "Our specialists generally work remotely—plugging into your digital tools however regular face to face contact at your office location can be extremely valuable. Our team will also attend on-site when critical milestones require. We deliver high-impact results from day one on a flexible, fixed term contract.",
+      "We believe the best work happens with a mix of focus and connection. Our team delivers high-impact results through a hybrid model: primarily remote for deep work, but regularly on-site for the moments that matter most. We value the power of in-person collaboration and ensure our presence at your office aligns with your key meetings and milestones. Results-driven, flexible, and fully aligned with your goals.",
   },
 ];
 
