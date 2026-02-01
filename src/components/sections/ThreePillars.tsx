@@ -4,24 +4,24 @@ import { Compass, Cog, ShieldCheck } from "lucide-react";
 const pillars = [
   {
     icon: Compass,
-    title: "The Setup",
-    subtitle: "Strategy",
+    title: "Adaptive Leadership",
+    subtitle: "Agile & Hybrid",
     description:
-      "We audit your current trajectory and build the project governance framework (PMO) your organisation is missing.",
+      "Senior-led Agile and Hybrid management that integrates seamlessly with your team to drive momentum.",
   },
   {
     icon: Cog,
-    title: "The Engine",
-    subtitle: "Execution",
+    title: "Transparent Governance",
+    subtitle: "Visibility",
     description:
-      "Our On-Demand Managers drive the daily heavy lifting, ensuring schedules are met and blockers are cleared.",
+      "Full visibility into project health and schedules, ensuring stakeholders are never in the dark.",
   },
   {
     icon: ShieldCheck,
-    title: "The Assurance",
+    title: "Quality-First Execution",
     subtitle: "Certainty",
     description:
-      "We utilise rigorous Test Management and Release protocols to ensure every launch is a non-event.",
+      "Rigorous Test Management and ITIL-aligned release protocols to guarantee production-ready results.",
   },
 ];
 

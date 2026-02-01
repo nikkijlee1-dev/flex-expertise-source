@@ -7,7 +7,8 @@ import logo from "@/assets/logo.png";
 const navLinks = [
   { href: "/#certainty-gap", label: "The Gap" },
   { href: "/#how-we-deliver", label: "Our Approach" },
-  { href: "/#methodologies", label: "Specialisations" },
+  { href: "/#our-talent", label: "Our Talent" },
+  { href: "/#how-we-work", label: "How We Work" },
   { href: "/#contact-form", label: "Contact" },
 ];
 
@@ -82,7 +83,7 @@ export function Header() {
                 </Link>
               ))}
               <Button variant="hero-accent" size="sm" asChild>
-                <Link to="/#contact">Book a Consultation</Link>
+                <Link to="/chat-with-us">Chat with us Today</Link>
               </Button>
             </div>
 
@@ -114,7 +115,7 @@ export function Header() {
                   </Link>
                 ))}
                 <Button variant="hero-accent" className="mt-4" asChild>
-                  <Link to="/#contact">Book a Consultation</Link>
+                  <Link to="/chat-with-us">Chat with us Today</Link>
                 </Button>
               </div>
             </div>

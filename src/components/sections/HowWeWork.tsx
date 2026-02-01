@@ -28,7 +28,7 @@ const steps = [
     number: "04",
     title: "Seamless Integration",
     description:
-      "Our specialists generally work remotely—plugging into your digital tools—but can attend on-site when critical milestones require. We deliver high-impact results from day one on a flexible, fixed term contract.",
+      "Our specialists generally work remotely—plugging into your digital tools however regular face to face contact at your office location can be extremely valuable. Our team will also attend on-site when critical milestones require. We deliver high-impact results from day one on a flexible, fixed term contract.",
   },
 ];
 
@@ -122,7 +122,7 @@ export function HowWeWork() {
                 The Hourly Advantage
               </h3>
               <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-                Pay for progress, not presence. We invoice by the hour rather than the day, providing accurate reporting and tracking of time spent. Most clients see a <span className="text-primary font-semibold">30-50% reduction</span> in management overhead.
+                Pay for progress, not presence. We invoice by the hour rather than the day, providing accurate reporting and tracking of time spent. Clients can expect to see an estimated <span className="text-primary font-semibold">30% reduction</span> in management overhead working this way.
               </p>
             </div>
           </div>

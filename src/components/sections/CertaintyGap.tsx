@@ -10,7 +10,7 @@ const chaosItems = [
 
 const certaintyItems = [
   { icon: MapPin, text: "Concrete Roadmaps & Milestones" },
-  { icon: Shield, text: "ITIL-aligned Release Rigor" },
+  { icon: Shield, text: "Release Management Rigour" },
   { icon: Layers, text: "Scalable PMO Infrastructure" },
   { icon: Rocket, text: "High-Impact Execution" },
 ];
@@ -39,7 +39,7 @@ export function CertaintyGap() {
   return (
     <section
       ref={sectionRef}
-      className="section-padding bg-foreground"
+      className="section-padding bg-muted/40"
       id="certainty-gap"
     >
       <div className="container mx-auto px-6">
@@ -48,24 +48,24 @@ export function CertaintyGap() {
           <span className="text-primary font-medium text-sm tracking-widest uppercase">
             The Challenge
           </span>
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mt-4 text-background">
+          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mt-4 text-foreground">
             The Certainty Gap
           </h2>
         </div>
 
         {/* Comparison Cards */}
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* Left Card - The Current Chaos */}
+          {/* Left Card - Current State Risks */}
           <div
-            className={`relative p-8 md:p-10 rounded-xl bg-muted/10 border border-background/20 transition-all duration-700 ${
+            className={`relative p-8 md:p-10 rounded-xl bg-card border border-border transition-all duration-700 ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
             }`}
           >
             <div className="absolute top-0 left-0 right-0 h-1 bg-muted-foreground/30 rounded-t-xl" />
-            <h3 className="font-heading text-2xl md:text-3xl text-background/80 mb-8">
-              The Risk of Status Quo
+            <h3 className="font-heading text-2xl md:text-3xl text-foreground mb-8">
+              Current State Risks
             </h3>
             <div className="space-y-5">
               {chaosItems.map((item, index) => (
@@ -74,26 +74,26 @@ export function CertaintyGap() {
                   className="flex items-center gap-4"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="shrink-0 w-10 h-10 rounded-lg bg-muted-foreground/20 flex items-center justify-center">
-                    <item.icon className="text-background/60" size={20} strokeWidth={1.5} />
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
+                    <item.icon className="text-muted-foreground" size={20} strokeWidth={1.5} />
                   </div>
-                  <span className="text-background/70 text-lg">{item.text}</span>
+                  <span className="text-muted-foreground text-lg">{item.text}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right Card - The Blue Caye Standard */}
+          {/* Right Card - With Blue Caye Leadership */}
           <div
-            className={`relative p-8 md:p-10 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 transition-all duration-700 delay-150 ${
+            className={`relative p-8 md:p-10 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/30 transition-all duration-700 delay-150 ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
             }`}
           >
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary rounded-t-xl" />
-            <h3 className="font-heading text-2xl md:text-3xl text-background mb-8">
-              On-Demand Certainty
+            <h3 className="font-heading text-2xl md:text-3xl text-foreground mb-8">
+              With Blue Caye Leadership
             </h3>
             <div className="space-y-5">
               {certaintyItems.map((item, index) => (
@@ -102,10 +102,10 @@ export function CertaintyGap() {
                   className="flex items-center gap-4"
                   style={{ animationDelay: `${(index + 4) * 100}ms` }}
                 >
-                  <div className="shrink-0 w-10 h-10 rounded-lg bg-primary/30 flex items-center justify-center">
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
                     <item.icon className="text-primary" size={20} strokeWidth={1.5} />
                   </div>
-                  <span className="text-background text-lg">{item.text}</span>
+                  <span className="text-foreground text-lg">{item.text}</span>
                 </div>
               ))}
             </div>
