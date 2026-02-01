@@ -146,7 +146,10 @@ export function Header() {
                   <a
                     key={link.href}
                     href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
+                    onClick={(e) => {
+                      handleNavClick(e, link.href);
+                      setIsMobileMenuOpen(false);
+                    }}
                     className="text-base font-medium text-foreground/70 hover:text-foreground transition-colors py-2 cursor-pointer"
                   >
                     {link.label}
