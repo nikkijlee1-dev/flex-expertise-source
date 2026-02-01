@@ -54,7 +54,7 @@ export function AboutTalent() {
             }`}
           >
             <p className="text-lg text-muted-foreground leading-relaxed">
-              We believe that top-tier leadership should not be restricted by the traditional 40-hour work week. Our pool consists of high calibre professionals who have traded the corporate grind for flexibility. These are seasoned leaders who have led multi-million dollar transformations and complex releases, now available to drive your projects on a fractional basis.
+              We believe that top-tier leadership should not be restricted by the traditional 40-hour work week. Our pool consists of high calibre professionals who have traded the corporate grind for flexibility. These are seasoned leaders who have led multi-million dollar transformations and complex releases, now available to drive your projects on an on-demand basis.
             </p>
 
             {/* Methodology Focus */}
@@ -63,7 +63,7 @@ export function AboutTalent() {
                 Methodology Focus
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                Our specialists are certified in Agile (SCRUM, SAFe) and PMI/PRINCE2/PMBOK methodologies. We understand that while teams strive for Agility, operational and funding models often require Hybrid or Waterfall governance. We draw on the right toolset for your specific environment to ensure delivery remains aligned with your project's cadence and financial obligations.
+                Our specialists are certified in Agile (SCRUM, PMI-ACP, SAFe), Release Management (ITIL), and Project Management methodologies (PMI-PMP/PRINCE2). We understand that while teams strive for Agility, operational and funding models often require Hybrid or Waterfall governance. We draw on the right toolset for your specific environment to ensure delivery remains aligned with your project's cadence and financial obligations.
               </p>
             </div>
           </div>

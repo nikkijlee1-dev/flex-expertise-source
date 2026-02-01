@@ -44,16 +44,19 @@ export function Services() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section-padding" id="services">
+    <section ref={sectionRef} className="section-padding bg-muted/30" id="methodologies">
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-primary font-medium text-sm tracking-widest uppercase">
-            What We Do
+            Specialisations
           </span>
           <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mt-4 text-foreground">
             Our Expertise
           </h2>
+          <p className="mt-6 text-lg text-muted-foreground">
+            Our specialists are certified in Agile (SCRUM, PMI-ACP, SAFe), Release Management (ITIL), and Project Management methodologies (PMI-PMP/PRINCE2).
+          </p>
         </div>
 
         {/* Service Cards */}
