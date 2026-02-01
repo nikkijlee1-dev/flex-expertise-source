@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
@@ -16,6 +16,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +30,41 @@ export function Header() {
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
+
+  // Handle hash scrolling on initial load and route changes
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, [location]);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const [path, hash] = href.split("#");
+    
+    // If we're already on the homepage and clicking a hash link
+    if (location.pathname === "/" && hash) {
+      e.preventDefault();
+      const element = document.getElementById(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else if (hash) {
+      // Navigate to homepage first, then scroll
+      e.preventDefault();
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  };
 
   return (
     <>
@@ -70,17 +106,18 @@ export function Header() {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.href}
-                  to={link.href}
-                  className={`text-sm font-medium transition-colors ${
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`text-sm font-medium transition-colors cursor-pointer ${
                     isScrolled 
                       ? "text-background/70 hover:text-background" 
                       : "text-muted-foreground hover:text-primary"
                   }`}
                 >
                   {link.label}
-                </Link>
+                </a>
               ))}
               <Button variant="hero-accent" size="sm" asChild>
                 <Link to="/chat-with-us">Chat with us Today</Link>
@@ -106,13 +143,14 @@ export function Header() {
             <div className="lg:hidden absolute top-20 left-0 right-0 bg-foreground/98 backdrop-blur-md shadow-card border-t border-background/10 animate-fade-in">
               <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
                 {navLinks.map((link) => (
-                  <Link
+                  <a
                     key={link.href}
-                    to={link.href}
-                    className="text-base font-medium text-background/70 hover:text-background transition-colors py-2"
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className="text-base font-medium text-background/70 hover:text-background transition-colors py-2 cursor-pointer"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 ))}
                 <Button variant="hero-accent" className="mt-4" asChild>
                   <Link to="/chat-with-us">Chat with us Today</Link>
