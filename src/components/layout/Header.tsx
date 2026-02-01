@@ -140,14 +140,14 @@ export function Header() {
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
-            <div className="lg:hidden absolute top-20 left-0 right-0 bg-foreground/98 backdrop-blur-md shadow-card border-t border-background/10 animate-fade-in">
+            <div className="lg:hidden absolute top-20 left-0 right-0 bg-background shadow-card border-t border-border animate-fade-in">
               <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
                 {navLinks.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="text-base font-medium text-background/70 hover:text-background transition-colors py-2 cursor-pointer"
+                    className="text-base font-medium text-foreground/70 hover:text-foreground transition-colors py-2 cursor-pointer"
                   >
                     {link.label}
                   </a>
