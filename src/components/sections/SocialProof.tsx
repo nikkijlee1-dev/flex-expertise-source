@@ -52,7 +52,9 @@ export function SocialProof() {
             {logos.map((logo) => (
               <div
                 key={logo.alt}
-                className="h-10 md:h-14 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                className={`opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 ${
+                  logo.alt === "Officeworks" ? "h-5 md:h-7" : "h-10 md:h-14"
+                }`}
               >
                 <img
                   src={logo.src}
