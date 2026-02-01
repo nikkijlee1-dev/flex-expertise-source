@@ -1,4 +1,15 @@
 import { useEffect, useRef, useState } from "react";
+import telstraLogo from "@/assets/logos/telstra.png";
+import nswGovLogo from "@/assets/logos/nsw-government.jpg";
+import officeworksLogo from "@/assets/logos/officeworks.svg";
+import endeavourLogo from "@/assets/logos/endeavour-group.png";
+
+const logos = [
+  { src: telstraLogo, alt: "Telstra" },
+  { src: nswGovLogo, alt: "NSW Government" },
+  { src: officeworksLogo, alt: "Officeworks" },
+  { src: endeavourLogo, alt: "Endeavour Group" },
+];
 
 export function SocialProof() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -38,33 +49,18 @@ export function SocialProof() {
           
           {/* Logo Grid - Grayscale */}
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
-            {/* Telstra */}
-            <div className="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale">
-              <svg viewBox="0 0 120 40" className="h-full w-auto" fill="currentColor">
-                <text x="0" y="28" className="text-xl font-bold tracking-tight">TELSTRA</text>
-              </svg>
-            </div>
-            
-            {/* NSW Government */}
-            <div className="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale">
-              <svg viewBox="0 0 140 40" className="h-full w-auto" fill="currentColor">
-                <text x="0" y="28" className="text-lg font-semibold">NSW Gov</text>
-              </svg>
-            </div>
-            
-            {/* Officeworks */}
-            <div className="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale">
-              <svg viewBox="0 0 140 40" className="h-full w-auto" fill="currentColor">
-                <text x="0" y="28" className="text-lg font-bold">Officeworks</text>
-              </svg>
-            </div>
-            
-            {/* Endeavour Group */}
-            <div className="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale">
-              <svg viewBox="0 0 160 40" className="h-full w-auto" fill="currentColor">
-                <text x="0" y="28" className="text-lg font-semibold">Endeavour</text>
-              </svg>
-            </div>
+            {logos.map((logo) => (
+              <div
+                key={logo.alt}
+                className="h-10 md:h-14 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-full w-auto object-contain"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

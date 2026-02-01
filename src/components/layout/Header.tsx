@@ -5,10 +5,10 @@ import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
-  { href: "/#services", label: "Our Expertise" },
-  { href: "/#how-we-work", label: "How it Works" },
-  { href: "/about", label: "Our Story" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/#certainty-gap", label: "The Gap" },
+  { href: "/#how-we-deliver", label: "Our Approach" },
+  { href: "/#methodologies", label: "Specialisations" },
+  { href: "/#contact-form", label: "Contact" },
 ];
 
 export function Header() {

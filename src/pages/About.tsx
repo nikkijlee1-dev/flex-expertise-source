@@ -67,7 +67,7 @@ const About = () => {
               Today, Blue Caye exists to bridge that gap. We realised that some of the best minds in Australia were becoming 'untapped' because they no longer fit into a rigid full time box.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Our mission is to unlock this elite talent pool for your business. We connect you with seasoned specialists who bring years of 'safe hands' experience to your most critical projects, but on a fractional, hourly basis. It's a model built for the modern era: high-impact expertise, scaled to your needs, delivered with total transparency.
+              Our mission is to unlock this elite talent pool for your business. We connect you with seasoned specialists who bring years of 'safe hands' experience to your most critical projects, but on an on-demand, hourly basis. It's a model built for the modern era: high-impact expertise, scaled to your needs, delivered with total transparency.
             </p>
           </div>
         </div>

@@ -12,10 +12,10 @@ const JoinTalentPool = () => {
               Join Our Network
             </span>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mt-4 text-foreground">
-              Looking for Your Next Fractional Challenge?
+              Looking for Your Next On-Demand Challenge?
             </h1>
             <p className="mt-8 text-xl text-muted-foreground leading-relaxed">
-              We are always looking for high calibre Project, Release, and Test Managers to join our fixed term contract pool. Work on your terms, get paid for your progress, and stay integrated with our managed service model.
+              We are always looking for high calibre Project, Release, and Test Managers to join our on-demand contract pool. Work on your terms, get paid for your progress, and stay integrated with our managed service model.
             </p>
           </div>
         </div>

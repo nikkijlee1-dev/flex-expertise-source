@@ -29,25 +29,25 @@ export function Footer() {
               </h4>
               <div className="flex flex-col gap-3 text-sm">
                 <Link
-                  to="/#services"
+                  to="/#certainty-gap"
                   className="text-background/70 hover:text-primary transition-colors"
                 >
-                  Our Expertise
+                  The Gap
                 </Link>
                 <Link
-                  to="/#how-we-work"
+                  to="/#how-we-deliver"
                   className="text-background/70 hover:text-primary transition-colors"
                 >
-                  How it Works
+                  Our Approach
                 </Link>
                 <Link
-                  to="/about"
+                  to="/#methodologies"
                   className="text-background/70 hover:text-primary transition-colors"
                 >
-                  Our Story
+                  Specialisations
                 </Link>
                 <Link
-                  to="/#contact"
+                  to="/#contact-form"
                   className="text-background/70 hover:text-primary transition-colors"
                 >
                   Contact
