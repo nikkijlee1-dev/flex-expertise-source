@@ -16,8 +16,8 @@ export function Hero() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl">
           {/* Main Heading */}
-          <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none tracking-tight text-foreground animate-slide-up">
-            Senior Project Leadership. Scaled to Your Business.
+          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-none tracking-tight text-foreground animate-slide-up">
+            Senior Project Delivery for Agile & Hybrid Teams.
           </h1>
 
           {/* Subheading */}
@@ -25,7 +25,7 @@ export function Hero() {
             className="mt-8 text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed animate-slide-up font-body"
             style={{ animationDelay: "100ms" }}
           >
-            Access high calibre Project, Release, and Test Managers on a flexible, part time basis. We bridge the talent gap for Australian firms, delivering expert execution without the full time overhead.
+            Move from strategy to launch with on-demand leadership that prioritises transparency and quality. We provide the expert oversight to build schedules, manage releases, and ensure project success—minus the full-time overhead.
           </p>
 
           {/* CTAs */}

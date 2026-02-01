@@ -16,8 +16,8 @@ export function Footer() {
               <img src={logo} alt="Blue Caye Consulting Group" className="h-[60px] w-auto brightness-0 invert" />
             </Link>
             <p className="text-sm text-background/60 mt-4 leading-relaxed">
-              High calibre Project, Release, and Test Management on a fractional basis. 
-              Senior expertise, scaled to your business.
+              High calibre Project, Release, and Test Management on an on-demand basis. 
+              Senior expertise, scaled to your organisation.
             </p>
           </div>
 
@@ -41,10 +41,10 @@ export function Footer() {
                   Our Approach
                 </Link>
                 <Link
-                  to="/#methodologies"
+                  to="/#our-talent"
                   className="text-background/70 hover:text-primary transition-colors"
                 >
-                  Specialisations
+                  Our Talent
                 </Link>
                 <Link
                   to="/#contact-form"
@@ -96,7 +96,7 @@ export function Footer() {
             <div>
               <h5 className="font-medium text-background/70 mb-2">Terms</h5>
               <p className="leading-relaxed">
-                All services are provided on a fractional, hourly basis as defined in individual Statements of Work. Service delivery is managed through our dedicated account management framework.
+                All services are provided on an on-demand, hourly basis as defined in individual Statements of Work. Service delivery is managed through our dedicated account management framework.
               </p>
             </div>
           </div>

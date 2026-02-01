@@ -5,6 +5,7 @@ import { Check, Loader2, Send } from "lucide-react";
 interface FormData {
   name: string;
   email: string;
+  phone: string;
   companyOrRole: string;
   enquiryType: string;
   message: string;
@@ -14,6 +15,7 @@ export function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
+    phone: "",
     companyOrRole: "",
     enquiryType: "",
     message: "",
@@ -74,7 +76,7 @@ export function ContactForm() {
           value={formData.name}
           onChange={handleInputChange}
           className="input-minimal"
-          placeholder="John Doe"
+          placeholder="John Smith"
         />
       </div>
 
@@ -95,6 +97,25 @@ export function ContactForm() {
           onChange={handleInputChange}
           className="input-minimal"
           placeholder="john@company.com"
+        />
+      </div>
+
+      {/* Phone Field */}
+      <div>
+        <label
+          htmlFor="contact-phone"
+          className="block text-sm font-medium text-foreground mb-2"
+        >
+          Phone
+        </label>
+        <input
+          type="tel"
+          id="contact-phone"
+          name="phone"
+          value={formData.phone}
+          onChange={handleInputChange}
+          className="input-minimal"
+          placeholder="04## ### ###"
         />
       </div>
 

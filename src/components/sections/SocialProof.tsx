@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import telstraLogo from "@/assets/logos/telstra.png";
 import nswGovLogo from "@/assets/logos/nsw-government.jpg";
-import officeworksLogo from "@/assets/logos/officeworks.svg";
+import officeworksLogo from "@/assets/logos/officeworks.png";
 import endeavourLogo from "@/assets/logos/endeavour-group.png";
 
 const logos = [
