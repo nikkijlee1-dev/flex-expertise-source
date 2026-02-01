@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, Loader2, Send } from "lucide-react";
+import { useRecaptcha } from "@/hooks/useRecaptcha";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 interface FormData {
   name: string;
@@ -22,6 +25,8 @@ export function ContactForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { token, resetRecaptcha, isLoaded } = useRecaptcha("contact-recaptcha");
+  const { toast } = useToast();
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -32,14 +37,41 @@ export function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!token) {
+      toast({
+        title: "Verification Required",
+        description: "Please complete the reCAPTCHA verification.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // TODO: Integrate with backend (CAPTCHA + email to admin@bluecaye.com.au)
-    // Simulate API call for now
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: {
+          ...formData,
+          recaptchaToken: token,
+          formType: "contact",
+        },
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      if (error) throw error;
+
+      setIsSubmitted(true);
+    } catch (error: any) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+      resetRecaptcha();
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -180,9 +212,9 @@ export function ContactForm() {
         />
       </div>
 
-      {/* CAPTCHA placeholder - will be integrated with backend */}
-      <div className="text-xs text-muted-foreground text-center">
-        This form is protected by reCAPTCHA.
+      {/* reCAPTCHA Widget */}
+      <div className="flex justify-center">
+        <div id="contact-recaptcha"></div>
       </div>
 
       {/* Submit Button */}
@@ -191,7 +223,7 @@ export function ContactForm() {
         variant="hero-accent"
         size="lg"
         className="w-full"
-        disabled={isSubmitting}
+        disabled={isSubmitting || !token}
       >
         {isSubmitting ? (
           <>

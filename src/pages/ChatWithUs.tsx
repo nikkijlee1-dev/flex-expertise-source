@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Check, Loader2, Phone } from "lucide-react";
+import { useRecaptcha } from "@/hooks/useRecaptcha";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 interface CallbackFormData {
   name: string;
@@ -21,6 +24,8 @@ const ChatWithUs = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { token, resetRecaptcha, isLoaded } = useRecaptcha("callback-recaptcha");
+  const { toast } = useToast();
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -31,14 +36,45 @@ const ChatWithUs = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!token) {
+      toast({
+        title: "Verification Required",
+        description: "Please complete the reCAPTCHA verification.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // TODO: Integrate with backend to send email to admin@bluecaye.com.au
-    // Simulate API call for now
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          location: formData.location,
+          enquiry: formData.enquiry,
+          recaptchaToken: token,
+          formType: "callback",
+        },
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      if (error) throw error;
+
+      setIsSubmitted(true);
+    } catch (error: any) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to send request. Please try again.",
+        variant: "destructive",
+      });
+      resetRecaptcha();
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -182,9 +218,9 @@ const ChatWithUs = () => {
                 />
               </div>
 
-              {/* CAPTCHA placeholder */}
-              <div className="text-xs text-muted-foreground text-center">
-                This form is protected by reCAPTCHA.
+              {/* reCAPTCHA Widget */}
+              <div className="flex justify-center">
+                <div id="callback-recaptcha"></div>
               </div>
 
               {/* Submit Button */}
@@ -193,7 +229,7 @@ const ChatWithUs = () => {
                 variant="hero-accent"
                 size="lg"
                 className="w-full"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !token}
               >
                 {isSubmitting ? (
                   <>
