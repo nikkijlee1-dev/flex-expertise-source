@@ -54,7 +54,7 @@ export function AboutTalent() {
             }`}
           >
             <p className="text-lg text-muted-foreground leading-relaxed">
-              We believe that top-tier leadership should not be restricted by the traditional 40-hour work week. Our pool consists of high calibre professionals who have traded the corporate grind for flexibility. These are seasoned leaders who have led multi-million dollar transformations and complex releases, now available to drive your projects on an on-demand basis.
+              We believe that top-tier leadership should not be restricted by the traditional 40-hour work week. Our talent pool consists of high calibre professionals who have prioritised working reduced hours to balance ambitious careers with personal and family commitments. These are seasoned leaders who have led multi-million dollar transformations and complex releases, now available to drive your projects on an on-demand basis.
             </p>
 
             {/* Methodology Focus */}

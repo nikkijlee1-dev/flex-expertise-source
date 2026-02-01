@@ -44,7 +44,7 @@ export function SocialProof() {
           }`}
         >
           <p className="text-muted-foreground text-sm md:text-base mb-8">
-            Blue Caye is a registered NSW Government and Victorian Government supplier.
+            Blue Caye is a registered NSW Government and Victorian Government supplier. We have worked with:
           </p>
           
           {/* Logo Grid - Grayscale */}
