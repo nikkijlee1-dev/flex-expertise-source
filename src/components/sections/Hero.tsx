@@ -34,13 +34,13 @@ export function Hero() {
             style={{ animationDelay: "200ms" }}
           >
             <Button variant="hero" size="lg" asChild>
-              <Link to="/#contact">
+              <Link to="/join-talent-pool">Join our Talent Pool</Link>
+            </Button>
+            <Button variant="hero-accent" size="lg" asChild>
+              <Link to="/#contact-form">
                 Access our Talent
                 <ArrowRight size={18} />
               </Link>
-            </Button>
-            <Button variant="hero-accent" size="lg" asChild>
-              <Link to="/join-talent-pool">Join our Talent Pool</Link>
             </Button>
           </div>
         </div>

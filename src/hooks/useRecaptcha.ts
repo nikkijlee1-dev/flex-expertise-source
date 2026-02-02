@@ -1,6 +1,6 @@
 import { useEffect, useCallback, useState } from "react";
 
-const RECAPTCHA_SITE_KEY = "6Le_PoEqAAAAAD1bCIbz5qGi4w8bvdEsXPtGD5Yn";
+const RECAPTCHA_SITE_KEY = "6LeIsl0sAAAAAHyIpao43uLUWNEKkCnKqpquAiLE";
 
 declare global {
   interface Window {
