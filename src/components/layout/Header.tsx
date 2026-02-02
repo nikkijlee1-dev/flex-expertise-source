@@ -119,8 +119,17 @@ export function Header() {
                   {link.label}
                 </a>
               ))}
-              <Button variant="hero-accent" size="sm" asChild>
-                <Link to="/chat-with-us">Chat with us Today</Link>
+              <Button 
+                variant="hero-accent" 
+                size="sm" 
+                asChild
+              >
+                <a 
+                  href="/#contact-form" 
+                  onClick={(e) => handleNavClick(e, "/#contact-form")}
+                >
+                  Chat with us Today
+                </a>
               </Button>
             </div>
 
@@ -156,7 +165,15 @@ export function Header() {
                   </a>
                 ))}
                 <Button variant="hero-accent" className="mt-4" asChild>
-                  <Link to="/chat-with-us">Chat with us Today</Link>
+                  <a 
+                    href="/#contact-form" 
+                    onClick={(e) => {
+                      handleNavClick(e, "/#contact-form");
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    Chat with us Today
+                  </a>
                 </Button>
               </div>
             </div>
