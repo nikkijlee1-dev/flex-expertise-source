@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ClipboardList, GitBranch, Shield, FileCheck } from "lucide-react";
+import { ClipboardList, GitBranch, Shield, FileCheck, LayoutGrid } from "lucide-react";
 
 const services = [
   {
@@ -25,6 +25,12 @@ const services = [
     title: "Compliance Audits",
     description:
       "Independent auditing of project delivery against internal and external regulatory standards. We focus on governance, risk mitigation, and delivery rigour to ensure your projects meet compliance requirements with confidence.",
+  },
+  {
+    icon: LayoutGrid,
+    title: "JIRA Optimisation",
+    description:
+      "Expert JIRA Health Checks and configuration to transform your Atlassian tooling from a project management burden into a strategic asset. We streamline workflows, improve hygiene, and deliver actionable insights for delivery transparency.",
   },
 ];
 

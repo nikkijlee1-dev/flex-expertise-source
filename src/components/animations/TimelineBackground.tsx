@@ -28,14 +28,14 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
 
   // Theme colors in HSL
   const colors = [
-    "hsla(202, 85%, 44%, 0.6)",
-    "hsla(202, 85%, 44%, 0.4)",
-    "hsla(224, 80%, 61%, 0.5)",
-    "hsla(224, 80%, 61%, 0.35)",
-    "hsla(330, 68%, 58%, 0.45)",
-    "hsla(330, 68%, 58%, 0.3)",
-    "hsla(202, 85%, 55%, 0.35)",
-    "hsla(330, 68%, 65%, 0.25)",
+    "hsla(202, 85%, 44%, 0.3)",
+    "hsla(202, 85%, 44%, 0.2)",
+    "hsla(224, 80%, 61%, 0.25)",
+    "hsla(224, 80%, 61%, 0.18)",
+    "hsla(330, 68%, 58%, 0.23)",
+    "hsla(330, 68%, 58%, 0.15)",
+    "hsla(202, 85%, 55%, 0.18)",
+    "hsla(330, 68%, 65%, 0.12)",
   ];
 
   const downloadGif = useCallback(async () => {
@@ -152,8 +152,8 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
           speed: (Math.random() * 0.15 + 0.05) * (Math.random() > 0.5 ? 1 : -1),
           offset: Math.random() * rect.width * 2,
           color: Math.random() > 0.5 
-            ? "hsla(330, 68%, 58%, 0.7)" 
-            : "hsla(202, 85%, 50%, 0.7)",
+            ? "hsla(330, 68%, 58%, 0.35)" 
+            : "hsla(202, 85%, 50%, 0.35)",
           blur: Math.random() * 5 + 3,
         });
       }
