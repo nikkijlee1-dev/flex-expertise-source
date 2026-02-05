@@ -59,10 +59,10 @@ const About = () => {
                  />
                </div>
                <h3 className="font-heading text-xl text-foreground">Nikki</h3>
-               <p className="text-primary font-medium text-sm mb-3">Director</p>
+                <p className="text-primary font-medium text-sm mb-3">Co-Founder & Director</p>
                <p className="text-muted-foreground text-sm leading-relaxed">
-                 Founded Blue Caye to provide elite On-Demand leadership that scales. 
-                 Specialist in removing friction and driving effective Project Delivery.
+                  Co-founded Blue Caye in 2018 with a passion for flexible work models. 
+                  Specialist in removing friction and driving effective Project Delivery for organisations needing strong leadership.
                </p>
              </div>
  
@@ -76,10 +76,10 @@ const About = () => {
                  />
                </div>
                <h3 className="font-heading text-xl text-foreground">Hany</h3>
-               <p className="text-primary font-medium text-sm mb-3">Principal Consultant</p>
+                <p className="text-primary font-medium text-sm mb-3">Co-Founder & Principal Consultant</p>
                <p className="text-muted-foreground text-sm leading-relaxed">
-                 Lead for technical delivery, Release Management, and JIRA Optimisation. 
-                 Expert at turning project "messes" into transparent successes.
+                  Co-founded Blue Caye in 2018. Lead for technical delivery, Release Management, and JIRA Optimisation with extensive experience across industries. 
+                  Expert at turning project "messes" into transparent successes.
                </p>
              </div>
  
@@ -95,8 +95,8 @@ const About = () => {
                <h3 className="font-heading text-xl text-foreground">Lisa-Monique</h3>
                <p className="text-primary font-medium text-sm mb-3">Head of Legal & People</p>
                <p className="text-muted-foreground text-sm leading-relaxed">
-                 Dedicated to Quality, Governance, and Compliance Audits, ensuring our 
-                 flexible model meets the highest standards.
+                  Lawyer specialising in compliance and HR. Dedicated to Quality, Governance, and Compliance Audits, ensuring our 
+                  flexible model meets the highest standards.
                </p>
              </div>
            </div>
@@ -243,9 +243,8 @@ const About = () => {
  
            <div className="max-w-3xl mx-auto space-y-8">
              <p className="text-lg text-muted-foreground leading-relaxed">
-               Blue Caye Consulting Group was founded in 2018 with a simple goal: to provide 
-               high calibre project management that actually delivers on its promises. We saw 
-               businesses overpaying for 'presence' rather than 'progress'.
+                Blue Caye Consulting Group was founded in 2018 by Nikki and Hany with a passion for flexible work and a clear mission: to provide 
+                high calibre project management that actually delivers on its promises. We saw organisations overpaying for 'presence' rather than 'progress', and companies struggling to find strong delivery leadership without the full-time overhead.
              </p>
              <p className="text-lg text-muted-foreground leading-relaxed">
                The post-2020 landscape changed everything. The way we work shifted permanently, 
@@ -254,9 +253,9 @@ const About = () => {
                in search of flexibility and purpose.
              </p>
              <p className="text-lg text-muted-foreground leading-relaxed">
-               Today, Blue Caye exists to bridge that gap. Our talent pool is a blend of full-time 
-               and part-time flexible professionals. Our part-time flexible arrangements offer 
-               significant cost savings for clients without compromising on elite delivery leadership.
+                Today, Blue Caye exists to bridge that gap—connecting organisations who need strong leadership with elite professionals who value flexibility. Our talent pool is a blend of full-time 
+                and part-time flexible professionals who are passionate about delivering excellence on their own terms. Our part-time flexible arrangements offer 
+                significant cost savings for clients without compromising on delivery quality.
              </p>
           </div>
         </div>
