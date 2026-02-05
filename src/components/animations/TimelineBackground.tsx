@@ -21,6 +21,8 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
   const animationRef = useRef<number>();
   const barsRef = useRef<Bar[]>([]);
   const timeRef = useRef<number>(0);
+  const startTimeRef = useRef<number | null>(null);
+  const [isFrozen, setIsFrozen] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
 
   // Theme colors in HSL
@@ -155,6 +157,18 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
     };
 
     const drawBars = (time: number) => {
+      // Track start time and freeze after 3 seconds
+      if (startTimeRef.current === null) {
+        startTimeRef.current = time;
+      }
+      
+      const elapsed = time - startTimeRef.current;
+      if (elapsed >= 3000 && !isFrozen) {
+        setIsFrozen(true);
+        // Don't request another frame - animation stops here
+        return;
+      }
+      
       timeRef.current = time;
       const rect = canvas.getBoundingClientRect();
       
@@ -200,11 +214,50 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
 
     resizeCanvas();
     initBars();
-    animationRef.current = requestAnimationFrame(drawBars);
+    
+    // Only start animation if not frozen
+    if (!isFrozen) {
+      animationRef.current = requestAnimationFrame(drawBars);
+    }
 
     const handleResize = () => {
       resizeCanvas();
       initBars();
+      // Redraw once on resize even when frozen
+      if (isFrozen && barsRef.current.length > 0) {
+        const rect = canvas.getBoundingClientRect();
+        const bgGradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
+        bgGradient.addColorStop(0, "hsl(210, 20%, 98%)");
+        bgGradient.addColorStop(0.5, "hsl(220, 25%, 96%)");
+        bgGradient.addColorStop(1, "hsl(210, 20%, 97%)");
+        ctx.fillStyle = bgGradient;
+        ctx.fillRect(0, 0, rect.width, rect.height);
+        
+        barsRef.current.forEach((bar) => {
+          const x = ((bar.offset + timeRef.current * bar.speed) % (rect.width + bar.width * 2)) - bar.width;
+          ctx.save();
+          ctx.filter = `blur(${bar.blur}px)`;
+          ctx.beginPath();
+          const radius = bar.height / 2;
+          ctx.roundRect(x, bar.y, bar.width, bar.height, radius);
+          ctx.fillStyle = bar.color;
+          ctx.fill();
+          ctx.restore();
+        });
+        
+        ctx.save();
+        ctx.filter = "blur(1px)";
+        for (let i = 0; i < 8; i++) {
+          const lineY = (rect.height / 8) * i + rect.height / 16;
+          ctx.beginPath();
+          ctx.moveTo(0, lineY);
+          ctx.lineTo(rect.width, lineY);
+          ctx.strokeStyle = "hsla(210, 20%, 80%, 0.3)";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
     };
 
     window.addEventListener("resize", handleResize);
@@ -215,7 +268,7 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
       }
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [isFrozen]);
 
   return (
     <>

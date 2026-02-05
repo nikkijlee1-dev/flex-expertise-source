@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ClipboardList, GitBranch, Shield } from "lucide-react";
+import { ClipboardList, GitBranch, Shield, FileCheck } from "lucide-react";
 
 const services = [
   {
@@ -19,6 +19,12 @@ const services = [
     title: "Test Management",
     description:
       "Accomplished Test Managers who build and lead high-performing QA teams. From strategy to automation oversight, we ensure your product meets the highest standards without the full time headcount.",
+  },
+  {
+    icon: FileCheck,
+    title: "Compliance Audits",
+    description:
+      "Independent auditing of project delivery against internal and external regulatory standards. We focus on governance, risk mitigation, and delivery rigour to ensure your projects meet compliance requirements with confidence.",
   },
 ];
 
@@ -60,7 +66,7 @@ export function Services() {
         </div>
 
         {/* Service Cards */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => (
             <div
               key={service.title}
