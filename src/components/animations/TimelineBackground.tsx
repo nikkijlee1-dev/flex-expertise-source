@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useCallback, useReducer } from "react";
 import { Button } from "@/components/ui/button";
 import { Download, Loader2 } from "lucide-react";
 
@@ -22,8 +22,9 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
   const barsRef = useRef<Bar[]>([]);
   const timeRef = useRef<number>(0);
   const startTimeRef = useRef<number | null>(null);
-  const [isFrozen, setIsFrozen] = useState(false);
-  const [isRecording, setIsRecording] = useState(false);
+  const isFrozenRef = useRef(false);
+  const isRecordingRef = useRef(false);
+  const [, forceUpdate] = useReducer((x: number) => x + 1, 0);
 
   // Theme colors in HSL
   const colors = [
@@ -39,9 +40,10 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
 
   const downloadGif = useCallback(async () => {
     const canvas = canvasRef.current;
-    if (!canvas || isRecording) return;
+    if (!canvas || isRecordingRef.current) return;
 
-    setIsRecording(true);
+    isRecordingRef.current = true;
+    forceUpdate();
 
     try {
       const { encode } = await import("modern-gif");
@@ -100,9 +102,10 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
     } catch (error) {
       console.error("Failed to generate GIF:", error);
     } finally {
-      setIsRecording(false);
+      isRecordingRef.current = false;
+      forceUpdate();
     }
-  }, [isRecording]);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -163,9 +166,10 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
       }
       
       const elapsed = time - startTimeRef.current;
-      if (elapsed >= 3000 && !isFrozen) {
-        setIsFrozen(true);
+      if (elapsed >= 3000) {
+        isFrozenRef.current = true;
         // Don't request another frame - animation stops here
+        // Canvas retains the last drawn frame automatically
         return;
       }
       
@@ -214,17 +218,13 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
 
     resizeCanvas();
     initBars();
-    
-    // Only start animation if not frozen
-    if (!isFrozen) {
-      animationRef.current = requestAnimationFrame(drawBars);
-    }
+    animationRef.current = requestAnimationFrame(drawBars);
 
     const handleResize = () => {
       resizeCanvas();
-      initBars();
-      // Redraw once on resize even when frozen
-      if (isFrozen && barsRef.current.length > 0) {
+      
+      // Redraw current state on resize
+      if (barsRef.current.length > 0) {
         const rect = canvas.getBoundingClientRect();
         const bgGradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
         bgGradient.addColorStop(0, "hsl(210, 20%, 98%)");
@@ -257,6 +257,16 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
           ctx.stroke();
         }
         ctx.restore();
+        
+        // If not frozen, reinitialize and restart animation
+        if (!isFrozenRef.current) {
+          initBars();
+          if (animationRef.current) {
+            cancelAnimationFrame(animationRef.current);
+          }
+          startTimeRef.current = null;
+          animationRef.current = requestAnimationFrame(drawBars);
+        }
       }
     };
 
@@ -268,7 +278,7 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
       }
       window.removeEventListener("resize", handleResize);
     };
-  }, [isFrozen]);
+  }, []);
 
   return (
     <>
@@ -280,11 +290,11 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
       {showDownloadButton && (
         <Button
           onClick={downloadGif}
-          disabled={isRecording}
+          disabled={isRecordingRef.current}
           className="absolute bottom-4 right-4 z-20"
           size="sm"
         >
-          {isRecording ? (
+          {isRecordingRef.current ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               Recording...
