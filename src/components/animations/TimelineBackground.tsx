@@ -160,16 +160,26 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
     };
 
     const drawBars = (time: number) => {
-      // Track start time and freeze after 3 seconds
+      // Track start time and fade out after 2 seconds
       if (startTimeRef.current === null) {
         startTimeRef.current = time;
       }
       
       const elapsed = time - startTimeRef.current;
-      if (elapsed >= 3000) {
+      const fadeStartTime = 1500; // Start fading at 1.5s
+      const fadeEndTime = 2000; // Complete fade at 2s
+      
+      // Calculate fade opacity (1 = fully visible, 0 = fully faded)
+      let fadeOpacity = 1;
+      if (elapsed >= fadeStartTime) {
+        fadeOpacity = Math.max(0, 1 - (elapsed - fadeStartTime) / (fadeEndTime - fadeStartTime));
+      }
+      
+      if (elapsed >= fadeEndTime) {
         isFrozenRef.current = true;
-        // Don't request another frame - animation stops here
-        // Canvas retains the last drawn frame automatically
+        // Draw final white background
+        ctx.fillStyle = "hsl(210, 20%, 98%)";
+        ctx.fillRect(0, 0, canvas.getBoundingClientRect().width, canvas.getBoundingClientRect().height);
         return;
       }
       
@@ -190,6 +200,7 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
         
         ctx.save();
         ctx.filter = `blur(${bar.blur}px)`;
+        ctx.globalAlpha = fadeOpacity;
         
         ctx.beginPath();
         const radius = bar.height / 2;
@@ -202,6 +213,7 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
 
       ctx.save();
       ctx.filter = "blur(1px)";
+      ctx.globalAlpha = fadeOpacity;
       for (let i = 0; i < 8; i++) {
         const lineY = (rect.height / 8) * i + rect.height / 16;
         ctx.beginPath();
