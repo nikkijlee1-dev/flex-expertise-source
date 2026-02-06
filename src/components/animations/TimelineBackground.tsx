@@ -166,8 +166,8 @@ export function TimelineBackground({ showDownloadButton = false }: TimelineBackg
       }
       
       const elapsed = time - startTimeRef.current;
-      const fadeStartTime = 1500; // Start fading at 1.5s
-      const fadeEndTime = 2000; // Complete fade at 2s
+      const fadeStartTime = 3000; // Start fading at 3s
+      const fadeEndTime = 3500; // Complete fade at 3.5s
       
       // Calculate fade opacity (1 = fully visible, 0 = fully faded)
       let fadeOpacity = 1;
